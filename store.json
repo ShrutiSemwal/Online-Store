@@ -1,0 +1,71 @@
+
+     [
+        {
+            "_id": {
+                "$oid": "61600c2f6246977998428b00"
+            },
+            "name": "Photo Decor",
+            "image": "pic1.jpg",
+            "price": "300",
+            "use": "Wall Decoration"
+        },
+        {
+            "_id": {
+                "$oid": "61600c2f6246977998428b01"
+            },
+            "name": "Shopelon Wooden Mist Humidifiers",
+            "image": "pic2.jpg",
+            "price": "699",
+             "use": "Room Aromatherapy"
+        },{
+            "_id": {
+                "$oid": "61600c2f6246977998428b02"
+            },
+            "name": "Skylofts Moon Light 3D Crystal Ball",
+            "image": "pic3.jpeg",
+            "price": "599",
+             "use": "Room Lightening"
+        },{
+            "_id": {
+                "$oid": "61600c2f6246977998428b03"
+            },
+            "name": "Artesia Wall Shelf-Wall Hanging",
+            "image": "pic4.jpeg",
+            "price": "1119",
+             "use": "Living Room Styling"
+        },{
+            "_id": {
+                "$oid": "61600c2f6246977998428b04"
+            },
+            "name": "Homesake Candle Holder",
+            "image": "pic5.jpg",
+            "price": "699",
+             "use": "Festival Decorations"
+        },{
+            "_id": {
+                "$oid": "61600c2f6246977998428b05"
+            },
+            "name": "Stybuzz Cuddle Cushion Combo",
+            "image":"pic6.webp",
+            "price":"641.83",
+             "use":"Bedroom Decoration"
+        },{
+            "_id": {
+                "$oid": "61600c2f6246977998428b06"
+            },
+            "name": "Dream Catcher",
+            "image":"pic7.jpeg",
+            "price":"175",
+             "use":"Drawing Room Decor"
+        },{
+            "_id": {
+                "$oid": "61600c2f6246977998428b08"
+            },
+            "name": "Wall painting with frame Abstract Blue",
+            "image":"pic8.webp",
+            "price":"1449",
+             "use":"Living Room Decor"
+        }
+        
+    ]    
+
