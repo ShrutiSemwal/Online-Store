@@ -10,16 +10,17 @@ const session = require('express-session')
 const flash = require('express-flash')
 const MongoDbStore= require('connect-mongodb-session')(session)
 
-
 //Database connection
 const url ='mongodb://localhost/roomDecor';
-mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology:true
+mongoose.connect(url, {useNewUrlParser: true, useCreateIndex:true, useUnifiedTopology: true, useFindAndModify:true
 });
 const connection = mongoose.connection;
-connection.on('error', console.error.bind(console,'connection failed'));
+//connection.on('error', console.error.bind(console,'connection failed'));
 connection.once('open', () => {
     console.log('Database connected successfully...');
-});
+}).on('error', function (err) {
+    console.log(err);
+  });
 
 //Session store
 let mongoStore = new MongoDbStore({
