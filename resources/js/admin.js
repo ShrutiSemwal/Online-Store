@@ -2,7 +2,7 @@ import axios from 'axios'
 import moment from 'moment'
 import AWN from "awesome-notifications"
 
-function initAdmin(){
+function initAdmin(socket){
     const orderTableBody = document.querySelector('#orderTableBody')
     let orders = []
 
@@ -83,8 +83,20 @@ function initAdmin(){
 </td>
 </tr>
             `
-        })
+        }).join('')
     }
+    //Socket
+    
+    socket.on('orderPlaced',(order) => {
+      console.log('From Admin js', order)
+      let globalOptions =   {durations: {success: 0}}
+      let notifier = new AWN(globalOptions)
+      let nextCallOptions =  {durations:  {success: 1000}}
+      notifier.success('New Order!', nextCallOptions)
+      orders.unshift(order)
+      orderTableBody.innerHTML = ''
+      orderTableBody.innerHTML = generateMarkup(orders)
+    })
 }
 
 module.exports = initAdmin
