@@ -2,7 +2,7 @@ import axios from 'axios'
 import moment from 'moment'
 import AWN from "awesome-notifications"
 
-function initAdmin(socket){
+export function initAdmin(socket){
     const orderTableBody = document.querySelector('#orderTableBody')
     let orders = []
 
@@ -99,4 +99,3 @@ function initAdmin(socket){
     })
 }
 
-module.exports = initAdmin
