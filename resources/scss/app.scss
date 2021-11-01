@@ -58,15 +58,15 @@ section.cart {
   }
 }
 
-section.login {
-  background: $secondary;
-  a {
-    color: $primary;
-    &:hover {
-      color: $primary-hover;
-    }
-  }
-}
+//section.login {
+//background: $secondary;
+//a {
+//color: $primary;
+//&:hover {
+// color: $primary-hover;
+//}
+// }
+//}
 
 a.link {
   color: $primary;
@@ -124,7 +124,7 @@ section.status {
   content: "\f560";
 }
 .status-box ul li:nth-child(3) span::before {
-  content: "\f474;";
+  content: "\f474";
 }
 .status-box ul li:nth-child(4) span::before {
   content: "\f0d1";

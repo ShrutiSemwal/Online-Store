@@ -2195,14 +2195,15 @@ function initAdmin(socket) {
 
   function renderItems(objects) {
     var parsedItems = Object.values(objects);
-    return parsedItems.map(function (storeItem) {
-      return "\n            <p> ".concat(storeItem.object.name, " - ").concat(storeItem.qty, " items </p>\n            ");
+    console.log(parsedItems);
+    return parsedItems === null || parsedItems === void 0 ? void 0 : parsedItems.map(function (storeItem) {
+      return "\n            <p> ".concat(storeItem.object.name, " - ").concat(storeItem.qty, " item(s) </p>\n            ");
     }).join('');
   }
 
   function generateMarkup(orders) {
     return orders.map(function (order) {
-      return "\n            <tr>\n            <td class=\"border px-4 py-2 text-green-900\">\n            <p> ".concat(order._id, "</p>\n            <div> ").concat(renderItems(order.objects), "</div>\n            </td>\n            <td class=\"border px-4 py-2\"> ").concat(order.customerId.name, " </td>\n            <td class=\"border px-4 py-2\"> ").concat(order.customerId.phone, " </td>\n            <td class=\"border px-4 py-2\"> ").concat(order.address, "</td>\n            <td class=\"border px-4 py-2\">\n            <div class =\"inline-block relative w-64\">\n               <form action=\"/admin/order/status\" method=\"POST\">\n                 <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\">\n                 <select name=\"status\" onchange=\"this.form.submit()\"\n                    class=\"block appearance-none w-full bg-white border\n                    border-gray-400 hover:border-gray-500 px-4 py-2 pr-8\n                    rounded shadow leading-tight focus:outline-none focus:shadow-outline\">\n                    <option value=\"order_placed\"\n                      ").concat(order.status === 'order_placed' ? 'selected' : '', ">\n                      Placed</option>\n                    <option value=\"confirmed\"\n                      ").concat(order.status === 'confirmed' ? 'selected' : '', ">\n                      Confirmed</option>\n                    <option value=\"prepared\"\n                      ").concat(order.status === 'prepared' ? 'selected' : '', ">\n                      Prepared</option>\n                    <option value=\"delivered\"\n                      ").concat(order.status === 'delivered' ? 'selected' : '', ">\n                      Delivered</option>\n                    <option value=\"completed\"\n                      ").concat(order.status === 'completed' ? 'selected' : '', ">\n                      Completed</option>\n                </select>\n            </form>\n\n            <div class=\"relative inline-block text-left\">\n      <div>\n    <button type=\"button\" class=\"inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500\" id=\"menu-button\" aria-expanded=\"true\" aria-haspopup=\"true\">\n      Options\n      <!-- Heroicon name: solid/chevron-down -->\n      <svg class=\"-mr-1 ml-2 h-5 w-5\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\" fill=\"currentColor\" aria-hidden=\"true\">\n        <path fill-rule=\"evenodd\" d=\"M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z\" clip-rule=\"evenodd\" />\n      </svg>\n    </button>\n  </div>\n  </div>\n  </td>\n  <td class=\"border px-4 py-2\">\n     ").concat((moment__WEBPACK_IMPORTED_MODULE_1___default()(order.createdAt), format('hh:mm A')), "\n</td>\n</tr>\n            ");
+      return "\n              <tr>\n              <td class=\"border px-4 py-2 text-green-900\">\n                  <p>".concat(order._id, "</p>\n                  <div>").concat(renderItems(order.objects), "</div>\n              </td>\n              <td class=\"border px-4 py-2\">").concat(order.customerId.name, "</td>\n              <td class=\"border px-4 py-2\">").concat(order.phone, "</td>\n              <td class=\"border px-4 py-2\">").concat(order.address, "</td>\n              <td class=\"border px-4 py-2\">\n                  <div class=\"inline-block relative w-64\">\n                      <form action=\"/admin/order/status\" method=\"POST\">\n                          <input type=\"hidden\" name=\"orderId\" value=\"").concat(order._id, "\">\n                          <select name=\"status\" onchange=\"this.form.submit()\"\n                              class=\"block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline\">\n                              <option value=\"order_placed\"\n                                  ").concat(order.status === 'order_placed' ? 'selected' : '', ">\n                                  Placed</option>\n                              <option value=\"confirmed\" ").concat(order.status === 'confirmed' ? 'selected' : '', ">\n                                  Confirmed</option>\n                              <option value=\"shipped\" ").concat(order.status === 'shipped' ? 'selected' : '', ">\n                                  Order Shipped</option>\n                              <option value=\"delivered\" ").concat(order.status === 'delivered' ? 'selected' : '', ">\n                                  Out for Delivery\n                              </option>\n                              <option value=\"completed\" ").concat(order.status === 'completed' ? 'selected' : '', ">\n                                  Delivered\n                              </option>\n                          </select>\n                      </form>\n                      <div\n                          class=\"pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700\">\n                          <svg class=\"fill-current h-4 w-4\" xmlns=\"http://www.w3.org/2000/svg\"\n                              viewBox=\"0 0 20 20\">\n                              <path\n                                  d=\"M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z\" />\n                          </svg>\n                      </div>\n                  </div>\n              </td>\n              <td class=\"border px-4 py-2\">\n                  ").concat(moment__WEBPACK_IMPORTED_MODULE_1___default()(order.createdAt).format('hh:mm A'), "\n              </td>\n              \n          </tr>\n      ");
     }).join('');
   } //Socket
 
@@ -2239,9 +2240,9 @@ function initAdmin(socket) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var awesome_notifications__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! awesome-notifications */ "./node_modules/awesome-notifications/dist/index.js");
-/* harmony import */ var awesome_notifications__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(awesome_notifications__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+/* harmony import */ var _admin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./admin */ "./resources/js/admin.js");
+/* harmony import */ var awesome_notifications__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! awesome-notifications */ "./node_modules/awesome-notifications/dist/index.js");
+/* harmony import */ var awesome_notifications__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(awesome_notifications__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
@@ -2255,41 +2256,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 var addToCart = document.querySelectorAll('.add-to-cart');
-var cartCounter = document.querySelector('#cartCounter'); // Set global options
-
-var globalOptions = {
-  durations: {
-    success: 0
-  }
-}; // Initialize instance of AWN
-
-var notifier = new (awesome_notifications__WEBPACK_IMPORTED_MODULE_1___default())(globalOptions);
+var cartCounter = document.querySelector('#cartCounter');
 
 function updateCart(item) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update-cart', item).then(function (res) {
-    cartCounter.innerText = res.data.totalQty; // Set custom options for next call if needed, it will override globals
-
-    var nextCallOptions = {
+    cartCounter.innerText = res.data.totalQty;
+    var globalOptions = {
       durations: {
-        success: 1000
-      }
-    }; // Call one of available functions
-
-    notifier.success('Your item is added to cart!', nextCallOptions);
-  })["catch"](function (err) {
-    var nextCallOptions = {
-      durations: {
-        success: 1000
+        success: 0
       }
     };
-    notifier.alert('Something went wrong!', nextCallOptions);
+    var notifier = new (awesome_notifications__WEBPACK_IMPORTED_MODULE_2___default())(globalOptions);
+    notifier.success('Your item is added to cart!', {
+      durations: {
+        success: 2000
+      }
+    });
+  })["catch"](function (err) {
+    notifier.alert('Something went wrong!', {
+      durations: {
+        success: 2000
+      }
+    });
   });
 }
 
 addToCart.forEach(function (btn) {
   btn.addEventListener('click', function (e) {
-    console.log(e);
-    var item = JSON.parse(btn.dataset.item);
+    var item = JSON.parse(btn.dataset.store);
     updateCart(item);
   });
 }); //Remove alert message after X seconds
@@ -2346,7 +2340,7 @@ if (order) {
 var adminAreaPath = window.location.pathname;
 
 if (adminAreaPath.includes('admin')) {
-  (0,_admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin)(socket);
+  (0,_admin__WEBPACK_IMPORTED_MODULE_1__.initAdmin)(socket);
   socket.emit('join', 'adminRoom');
 }
 
@@ -2356,6 +2350,12 @@ socket.on('orderUpdated', function (data) {
   updatedOrder.updatedAt = moment__WEBPACK_IMPORTED_MODULE_3___default()().format();
   updatedOrder.status = data.status;
   updateStatus(updatedOrder);
+  var globalOptions = {
+    durations: {
+      success: 0
+    }
+  };
+  var notifier = new (awesome_notifications__WEBPACK_IMPORTED_MODULE_2___default())(globalOptions);
   var nextCallOptions = {
     durations: {
       success: 1000

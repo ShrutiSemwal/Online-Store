@@ -5,8 +5,8 @@ function cartController(){
         },
         update(req, res){
             //let cart = {
-               // objects:{
-                   // itemId: {object: itemObject, qty:0},
+               // objects(object):{
+                   // itemId(key): {object: itemObject, qty:0},
                 //},
                 //totalQty: 0,
                 //totalPrice:0
@@ -32,7 +32,7 @@ function cartController(){
                    cart.totalQty = cart.totalQty + 1
                    cart.totalPrice = cart.totalPrice + req.body.price
             } else {
-                cart.objects[req.body._id].qty = cart.objects[req.body._id] + 1
+                cart.objects[req.body._id].qty = cart.objects[req.body._id].qty + 1
                 cart.totalQty =   cart.totalQty + 1
                 cart.totalPrice = cart.totalPrice + req.body.price
             }

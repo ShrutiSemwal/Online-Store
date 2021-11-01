@@ -1,35 +1,26 @@
 import axios from 'axios'
-import AWN from "awesome-notifications"
 import {initAdmin} from './admin'
+import AWN from "awesome-notifications"
 import moment from 'moment'
 
 let addToCart = document.querySelectorAll('.add-to-cart')
 let cartCounter = document.querySelector('#cartCounter')
  
-// Set global options
-let globalOptions =   {durations: {success: 0}}
-// Initialize instance of AWN
-let notifier = new AWN(globalOptions)
-
 function updateCart(item){  
     axios.post('/update-cart',item).then(res => {
         cartCounter.innerText = res.data.totalQty
-        // Set custom options for next call if needed, it will override globals
-       let nextCallOptions =  {durations:  {success: 1000}}
-       // Call one of available functions
-       notifier.success('Your item is added to cart!', nextCallOptions)
+        let globalOptions =   {durations: {success: 0}}
+        let notifier = new AWN(globalOptions)
+       notifier.success('Your item is added to cart!', {durations: {success: 2000}})
     }).catch(err => {
-        
-       let nextCallOptions =  {durations:  {success: 1000}}
-       notifier.alert('Something went wrong!', nextCallOptions)
+       notifier.alert('Something went wrong!', {durations: {success: 2000}})
     })
 
 }
 
 addToCart.forEach((btn) => {
    btn.addEventListener('click', (e)=>{
-       console.log(e)
-       let item = JSON.parse(btn.dataset.item)
+       let item = JSON.parse(btn.dataset.store)
        updateCart(item)
        
    } )
@@ -96,6 +87,8 @@ socket.on('orderUpdated', (data) => {
     updatedOrder.updatedAt = moment().format()
     updatedOrder.status = data.status
     updateStatus(updatedOrder)
+    let globalOptions =   {durations: {success: 0}}
+    let notifier = new AWN(globalOptions)
     let nextCallOptions =  {durations:  {success: 1000}}
     notifier.success('Order status updated!', nextCallOptions)
     

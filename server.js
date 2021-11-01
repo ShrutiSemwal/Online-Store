@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config() //to access variables in env
 const express = require('express');
 const app= express()
 const ejs = require('ejs')
@@ -13,7 +13,7 @@ const passport = require('passport')
 const Emitter = require('events')
 
 //Database connection
-const url ='mongodb://localhost/roomDecor';
+const url = process.env.MONGO_CONNECTION_URL;
 mongoose.connect(url, {useUnifiedTopology: true
 });
 const connection = mongoose.connection;
@@ -22,13 +22,6 @@ connection.once('open', () => {
 }).on('error', function (err) {
     console.log(err);
  });
-
-
-//connection.once('open', () => {
-    //console.log('Database connected successfully...');
-//}).on('error', function (err) {
-    //console.log(err);
- // });
 
 
 //Session store
@@ -46,8 +39,8 @@ app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
     store: MongoDbStore.create({
-        client: connection.getClient()
-        //mongoUrl: 'mongodb://localhost/roomDecor'
+        //client: connection.getClient()
+        mongoUrl: process.env.MONGO_CONNECTION_URL
     }),
     saveUninitialized: false,
     cookie: {maxAge: 1000 * 60 * 60 * 24} //24 hours
@@ -79,6 +72,9 @@ app.set('view engine', 'ejs')
 
 
 require('./routes/web.js')(app)
+app.use((req,res) => {
+    res.status(404).render('errors/error')
+})
 
 const server = app.listen(PORT, ()=> {
     console.log(`Listening on port ${PORT}`)
@@ -87,9 +83,8 @@ const server = app.listen(PORT, ()=> {
 //Socket
 
 const io = require('socket.io')(server)
-io.on('connection', () => {
+io.on('connection', (socket) => {
     //Join 
-    console.log(socket.id)
     socket.on('join', (orderId)=> {
              socket.join(orderId)
     })

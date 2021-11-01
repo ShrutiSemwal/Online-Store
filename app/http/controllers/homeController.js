@@ -7,6 +7,7 @@ function homeController() {
         async index (req,res) {
             
             const items = await Store.find()
+            console.log(items)
             return res.render('home', {items: items})
 
            //Store.find().then(function(items) {

@@ -15,9 +15,8 @@
                    <h1><%= item.object.name %></h1>
                    <span><%= item.object.use %></span>
                </div>
-               <span class="flex-1"><%= item.qty %>item</span>
+               <span class="flex-1"><%= item.qty %> item(s)</span>
                <span class="font-bold text-lg">₹<%= item.object.price * item.qty %></span>
-               <button class="ml-12" id="deleteCartButton">Delete</button>
            </div>
           <% } %>
         </div>

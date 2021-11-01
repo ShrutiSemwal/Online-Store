@@ -55,16 +55,6 @@ section.cart .amount {
   color: #40e0d0;
 }
 
-section.login {
-  background: #f8f8f8;
-}
-section.login a {
-  color: #40e0d0;
-}
-section.login a:hover {
-  color: #afeeee;
-}
-
 a.link {
   color: #40e0d0;
 }
@@ -120,7 +110,7 @@ section.status {
 }
 
 .status-box ul li:nth-child(3) span::before {
-  content: "\f474;";
+  content: "\f474";
 }
 
 .status-box ul li:nth-child(4) span::before {
