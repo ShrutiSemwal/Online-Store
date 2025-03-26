@@ -45,18 +45,18 @@ Similarly, for admin, success message popup will appear as soon as the new order
 ### Adding items to cart
 
 ![Cart Page](cart.png)
-![Add Item](additem.png)
+![Add Item](add item.png)
 
 
 ### Orders Page
 
-![Order Summary](ordersummary.png)
+![Order Summary](order summary.png)
 ![Orders](orders.png)
 
 
 ### Orders Tracking Page
 
-![order Tracking](ordertracking.png)
+![order Tracking](order tracking.png)
 
 
 ## Admin Role
@@ -73,7 +73,7 @@ Similarly, for admin, success message popup will appear as soon as the new order
 
 ### Real-time tracking order response
 
-![Tracking Response](admin-trackingrealtime.jpg)
-![Tracking Response](admin-trackingrealtime1.jpg)
-![Tracking Response](admin-trackingrealtime2.jpg)
-![Tracking Response](admin-trackingrealtime3.jpg)
+![Tracking Response](admin-tracking realtime.jpg)
+![Tracking Response](admin-tracking realtime1.jpg)
+![Tracking Response](admin-tracking realtime2.jpg)
+![Tracking Response](admin-tracking realtime3.jpg)
