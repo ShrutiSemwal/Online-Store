@@ -68,7 +68,7 @@ Similarly, for admin, success message popup will appear as soon as the new order
 
 ### Orders Page
 
-![Orders Page](admin-png.jpg)
+![Orders Page](admin-orders.jpg)
 
 
 ### Real-time tracking order response
