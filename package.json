@@ -2,7 +2,7 @@
   "name": "online-store",
   "version": "1.0.0",
   "description": "This is an Online store web-app.",
-  "main": " ",
+  "main": "server.js",
   "author": "ShrutiSemwal",
   "watch": {
     "build": {
@@ -18,7 +18,6 @@
     "development": "mix",
     "watch": "npx mix watch",
     "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
-    
   },
   "keywords": [
     "ShrutiSemwal"
